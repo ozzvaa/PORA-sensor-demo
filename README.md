@@ -166,5 +166,7 @@ override fun onPause() {
 ---
 
 ## Primer števca korakov
-![step_counter_DEMO.gif](Resources/Screen_Recording_20251209_230321_GyroApp_1_1_1.gif)
+
 [StepCounterActivity.kt](app/src/main/java/si/um/feri/gyroapp/StepCounterActivity.kt)
+
+<img src="Resources/Screen_Recording_20251209_230321_GyroApp_1_1_1.gif" width="350"/>
