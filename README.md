@@ -33,7 +33,7 @@ Platforma Android podpira tri večje skupine senzorjev:
 | + Optimizirano za nizko porabo energije.                                | - Točnost podatkov variira med različnimi telefoni.                          |
 | + Dober nadzor nad frekvenco posodobitev (SENSOR_DELAY_*).              | - Power-saving načini pogosto onemogočajo senzorje (Samsung, Xiaomi).        |
 | + Del standardnega Android SDK → dobra dokumentacija in kompatibilnost. | - Ročno upravljanje z življenjskim ciklom (registracija/odjava listenerjev). |
-| + Dogodkovni model omogoča delo v realnem času.                         | —                                                                            |
+| + Dogodkovni model omogoča delo v realnem času.                         |                                                                              |
 
 ---
 
@@ -165,7 +165,6 @@ override fun onPause() {
 
 ---
 
-
-
 ## Primer števca korakov
 ![step_counter_DEMO.gif](Resources/Screen_Recording_20251209_230321_GyroApp_1_1_1.gif)
+[StepCounterActivity.kt](app/src/main/java/si/um/feri/gyroapp/StepCounterActivity.kt)
