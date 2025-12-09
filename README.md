@@ -166,8 +166,6 @@ override fun onPause() {
 ---
 
 
-## Primer žiroskop
-
 
 ## Primer števca korakov
 ![step_counter_DEMO.gif](Resources/Screen_Recording_20251209_230321_GyroApp_1_1_1.gif)
