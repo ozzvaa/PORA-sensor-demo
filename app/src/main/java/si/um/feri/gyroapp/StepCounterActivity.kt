@@ -1,6 +1,5 @@
 package si.um.feri.gyroapp
 
-import android.content.Context
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
@@ -17,8 +16,8 @@ class StepCounterActivity : AppCompatActivity(), SensorEventListener {
 
     private var sensorManager: SensorManager? = null
     lateinit var binding: ActivityStepCounterBinding
-    private var totalSteps = 0f
     private var initialSteps = -1f
+    private val stepGoal = 100f
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +36,9 @@ class StepCounterActivity : AppCompatActivity(), SensorEventListener {
         }
 
 
+        binding.tvStepMaxLabel.text = "/${stepGoal.toInt()}"
+        binding.cpbStepCounter.progressMax = stepGoal
+
     }
 
     override fun onResume() {
@@ -51,28 +53,23 @@ class StepCounterActivity : AppCompatActivity(), SensorEventListener {
             Toast.makeText(this, "TYPE_STEP_COUNTER available!", Toast.LENGTH_SHORT).show()
         }
 
-        if (stepDetector == null) {
-            Toast.makeText(this, "TYPE_STEP_DETECTOR missing!", Toast.LENGTH_SHORT).show()
-        } else {
-            Toast.makeText(this, "TYPE_STEP_DETECTOR available!", Toast.LENGTH_SHORT).show()
-        }
+//        if (stepDetector == null) {
+//            Toast.makeText(this, "TYPE_STEP_DETECTOR missing!", Toast.LENGTH_SHORT).show()
+//        } else {
+//            Toast.makeText(this, "TYPE_STEP_DETECTOR available!", Toast.LENGTH_SHORT).show()
+//        }
 
         val stepSensor = sensorManager?.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
 
         if (stepSensor == null) {
             Toast.makeText(this, "No sensor detected!", Toast.LENGTH_SHORT).show()
-        }
-        else {
+        } else {
             sensorManager?.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_FASTEST)
         }
     }
 
-    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
-
-    }
 
     override fun onSensorChanged(event: SensorEvent?) {
-
         if (event == null) {
             binding.tvStepCounter.text = "NULL"
 
@@ -89,6 +86,10 @@ class StepCounterActivity : AppCompatActivity(), SensorEventListener {
 
         binding.tvStepCounter.text = currentSteps.toInt().toString()
         binding.cpbStepCounter.setProgressWithAnimation(currentSteps)
+    }
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
+
     }
 
 }

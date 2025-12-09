@@ -52,7 +52,7 @@
         android:id="@+id/tvStepMaxLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="/10000"
+        android:text="/100"
         app:layout_constraintBottom_toBottomOf="@+id/cpbStepCounter"
         app:layout_constraintEnd_toEndOf="@+id/cpbStepCounter"
         app:layout_constraintStart_toStartOf="@+id/cpbStepCounter"
