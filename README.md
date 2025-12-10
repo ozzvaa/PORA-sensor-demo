@@ -1,4 +1,4 @@
-# Android Sensor Framework
+# [Android Sensor Framework](https://developer.android.com/develop/sensors-and-location/sensors/sensors_overview)
 ---
 
 ### Utemeljitev izbire
@@ -41,7 +41,7 @@ Platforma Android podpira tri večje skupine senzorjev:
 
 - Android Open Source Project (AOSP)
 
-- Apache License 2.0
+- [Apache License 2.0](https://developer.android.com/license)
 
 ---
 
@@ -69,7 +69,10 @@ Platforma Android podpira tri večje skupine senzorjev:
 ---
 
 ## Uporaba
-| **Seznam senzorjev**       |
+
+### Seznam senzorjev na Android napravah
+
+| **Seznam senzorjev**       |  
 |----------------------------|
 | `TYPE_ACCELEROMETER`       |
 | `TYPE_AMBIENT_TEMPERATURE` |
@@ -86,6 +89,14 @@ Platforma Android podpira tri večje skupine senzorjev:
 | `TYPE_TEMPERATURE`         |
 
 ---
+
+![koordinatni_sistem_senzorja](https://developer.android.com/static/images/axis_device.png)
+
+#### **Koordinatni sistem, ki ga uporablja Sensor API**
+
+---
+
+## Kotlin
 
 ### 1. Pridobivanje SensorManager in določene vrste senzorja
 
