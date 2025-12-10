@@ -98,7 +98,15 @@ Platforma Android podpira tri večje skupine senzorjev:
 
 ## Kotlin
 
-### 1. Pridobivanje SensorManager in določene vrste senzorja
+### 1. Pridobivanje seznama senzorjev na uporabnikovi napravi
+
+```kotlin
+val deviceSensors: List<Sensor> = sensorManager.getSensorList(Sensor.TYPE_ALL) // get a listing of every sensor on a device
+```
+
+---
+
+### 2. Pridobivanje SensorManager in določene vrste senzorja
 
 Za začetek mora aplikacija pridobiti `SensorManager` in izbrati senzor, ki ga želi uporabljati.
 
@@ -109,7 +117,7 @@ val gyroscope = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
 
 ---
 
-### 2. Implementacija SensorEventListener
+### 3. Implementacija SensorEventListener
 
 Za delo s senzorji mora razred implementirati metodi:
 
@@ -136,7 +144,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
 ---
 
-### 3. Registracija listenerja v onResume()
+### 4. Registracija listenerja v onResume()
 
 Da aplikacija začne poslušati senzor:
 
@@ -162,7 +170,7 @@ override fun onResume() {
 
 ---
 
-### 4. Odjava listenerja v onPause()
+### 5. Odjava listenerja v onPause()
 
 Da preprečimo izgubo baterije ali “memory leak”:
 
@@ -176,7 +184,7 @@ override fun onPause() {
 ---
 
 
-### 5. Dodajanje dovoljenja v Android Manifest
+### 6. Dodajanje dovoljenja v Android Manifest
 
 `<uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />`
 
