@@ -1,7 +1,7 @@
 # Android Sensor Framework
 ---
 
-## Utemeljitev izbire
+### Utemeljitev izbire
 
 Večina Android naprav ima danes vgrajenih veliko število različnih senzorjev, ki omogočajo
 pridobivanje podatkov in meritev neposredno z naprave. Ti podatki so lahko zelo uporabni, uporabimo
@@ -24,7 +24,7 @@ Platforma Android podpira tri večje skupine senzorjev:
 
 --- 
 
-## Prednosti in slabosti
+### Prednosti in slabosti
 
 | Prednosti                                                               | Slabosti                                                                     |
 |-------------------------------------------------------------------------|------------------------------------------------------------------------------|
@@ -37,7 +37,7 @@ Platforma Android podpira tri večje skupine senzorjev:
 
 ---
 
-## Licenca
+### Licenca
 
 - Android Open Source Project (AOSP)
 
@@ -45,14 +45,14 @@ Platforma Android podpira tri večje skupine senzorjev:
 
 ---
 
-## Število uporabnikov
+### Število uporabnikov
 
 - Ni ločena knjižnica ampak je del Android sistema, zato ga v določeni meri uporabljajo vse Android
   naprave. Število uporabnikov/naprav je tako ocenjeno na okoli 4 milijarde.
 
 ---
 
-## Časovna in prostorska zahtevnost
+### Časovna in prostorska zahtevnost
 
 - Časovna zahtevnost: O(1) - dogodki prihajajo asinhrono preko sistema, ki jih zgolj posreduje
   aplikaciji.
@@ -60,7 +60,7 @@ Platforma Android podpira tri večje skupine senzorjev:
 
 ---
 
-## Vzdrževanje - št. razvijalcev, zadnja sprememba
+### Vzdrževanje - št. razvijalcev, zadnja sprememba
 
 - Aktivno vzdrževan, razvijajo ga razvijalci AOSP projekta
 - Posodobljen z vsako posodobitvijo Android sistema
@@ -68,8 +68,7 @@ Platforma Android podpira tri večje skupine senzorjev:
 
 ---
 
-## Primeri uporabe
-
+## Uporaba
 | **Seznam senzorjev**       |
 |----------------------------|
 | `TYPE_ACCELEROMETER`       |
@@ -165,7 +164,51 @@ override fun onPause() {
 
 ---
 
-## Primer števca korakov
+
+### 5. Dodajanje dovoljenja v Android Manifest
+
+`<uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />`
+
+## Demo primeri
+
+
+#### Hello World primer:
+
+```kotlin
+class GyroDemoActivity : AppCompatActivity(), SensorEventListener {
+
+    private lateinit var sensorManager: SensorManager
+    private var gyro: Sensor? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
+        gyro = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        sensorManager.registerListener(this, gyro, SensorManager.SENSOR_DELAY_GAME)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        sensorManager.unregisterListener(this)
+    }
+
+    override fun onSensorChanged(event: SensorEvent?) {
+        val (x, y, z) = event!!.values
+        // prikaz ali uporaba vrednosti
+    }
+
+    override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {}
+}
+```
+---
+
+#### Primer števca korakov
 
 [StepCounterActivity.kt](app/src/main/java/si/um/feri/gyroapp/StepCounterActivity.kt)
 
